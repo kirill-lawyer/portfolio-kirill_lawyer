@@ -223,6 +223,7 @@
       <a href="#achievements">Достижения</a>
       <a href="#documents">Документы</a>
       <a href="#court">Судебная практика</a>
+      <a href="#education">Образование</a>
       <a href="#contact">Контакты</a>
     </nav>
     <button class="navtoggle" id="navToggle" aria-label="Меню">☰</button>
@@ -425,6 +426,17 @@
     </div>
   </section>
 
+  <section id="education" style="background:var(--surface-2);border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">Образование</div>
+      <h2 style="font-size:28px;margin:0 0 20px;font-weight:400;">Дипломы о высшем юридическом образовании</h2>
+      <div class="court-note">
+        Оба диплома о высшем юридическом образовании получены с отличием. Просмотр — во всплывающем окне, без возможности скачивания.
+      </div>
+      <div class="court-grid" id="eduGrid"></div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="wrap">
       <div class="contact-box">
@@ -558,6 +570,19 @@
     card.innerHTML='<span class="tag">'+c.tag+'</span><dl><dt>Дело</dt><dd>'+c.num+'</dd><dt>Суд</dt><dd>'+c.court+'</dd><dt>Краткое описание</dt><dd>'+c.desc+'</dd><dt>В чём сложность</dt><dd>'+c.complexity+'</dd></dl><a class="btn btn-ghost">Смотреть решение 🔒</a>';
     card.querySelector(".btn").addEventListener("click",function(){ openLB(courtCases, i, "судебный акт, скачивание недоступно"); });
     courtGrid.appendChild(card);
+  });
+
+  var eduDocs=[
+    {tag:"Магистратура · 2026", title:"Диплом магистра с отличием — МГЮА им. О. Е. Кутафина", inst:"Московский государственный юридический университет имени О. Е. Кутафина (МГЮА), г. Москва", spec:"40.04.01 Юриспруденция", qual:"Магистр", year:"2026", pages:["docs/diploma-mgua.jpg"]},
+    {tag:"Специалитет · 2015", title:"Диплом специалиста с отличием — Смоленский гуманитарный университет", inst:"Смоленский гуманитарный университет, г. Смоленск", spec:"030501 Юриспруденция", qual:"Юрист", year:"2015", pages:["docs/diploma-sgu.jpg"]}
+  ];
+  var eduGrid=document.getElementById("eduGrid");
+  eduDocs.forEach(function(c,i){
+    var card=document.createElement("div");
+    card.className="court-card";
+    card.innerHTML='<span class="tag">'+c.tag+'</span><dl><dt>Вуз</dt><dd>'+c.inst+'</dd><dt>Направление / специальность</dt><dd>'+c.spec+'</dd><dt>Квалификация</dt><dd>'+c.qual+'</dd><dt>Документ</dt><dd>Диплом с отличием, '+c.year+' г.</dd></dl><a class="btn btn-ghost">Смотреть диплом 🔒</a>';
+    card.querySelector(".btn").addEventListener("click",function(){ openLB(eduDocs, i, "только просмотр, скачивание недоступно"); });
+    eduGrid.appendChild(card);
   });
 
   var lb=document.getElementById("lightbox"), lbImg=document.getElementById("lbImg"), lbCap=document.getElementById("lbCap");
