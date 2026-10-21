@@ -61,9 +61,7 @@
   .wrap{max-width:1160px;margin:0 auto;padding-inline:32px;}
   section{padding-block:104px;}
   .eyebrow{
-    text-transform:uppercase;
-    letter-spacing:.22em;
-    font-size:11.5px;
+    font-size:14px;
     color:var(--gold);
     font-weight:600;
     margin-bottom:18px;
@@ -79,10 +77,10 @@
     border-bottom:1px solid var(--line);
   }
   header.site .bar{display:flex;align-items:center;justify-content:space-between;padding-block:22px;}
-  .logo{font-family:"PT Serif",serif;font-weight:700;font-size:18px;display:flex;flex-direction:column;line-height:1.2;letter-spacing:.01em;}
-  .logo span{font-family:"Inter",sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px;}
-  nav.links{display:flex;gap:34px;font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;}
-  nav.links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .logo{font-family:"PT Serif",serif;font-weight:700;font-size:18px;display:flex;flex-direction:column;line-height:1.2;}
+  .logo span{font-family:"Inter",sans-serif;font-weight:400;font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
+  nav.links{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  nav.links a{white-space:nowrap;text-decoration:none;color:var(--ink-soft);transition:color .15s;}
   nav.links a:hover{color:var(--ink);}
   .navtoggle{display:none;background:none;border:1px solid var(--line);border-radius:0;padding:8px 10px;color:var(--ink);}
   @media (max-width:860px){
@@ -101,8 +99,7 @@
   .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:0;
-    font-weight:600;font-size:13px;text-decoration:none;cursor:pointer;border:1px solid var(--ink);
-    text-transform:uppercase;letter-spacing:.08em;
+    font-weight:600;font-size:14.5px;text-decoration:none;cursor:pointer;border:1px solid var(--ink);
     transition:opacity .15s;
   }
   .btn:hover{opacity:.7;}
@@ -110,13 +107,13 @@
   .btn-ghost{border-color:var(--line);color:var(--ink);}
 
   .photo-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:3/4;background:var(--surface-2);border:1px solid var(--line);}
-  .photo-card img{width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;transition:opacity .25s ease;}
+  .photo-card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;user-select:none;-webkit-user-drag:none;transition:opacity .2s ease;}
   .photo-hint{
     position:absolute;left:0;bottom:0;right:0;background:var(--surface);border-top:1px solid var(--line);color:var(--ink-soft);
-    font-size:11px;padding:10px 14px;display:flex;align-items:center;gap:8px;letter-spacing:.06em;text-transform:uppercase;justify-content:center;
+    font-size:12.5px;padding:10px 14px;display:flex;align-items:center;gap:8px;justify-content:center;
   }
-  .dot-row{display:flex;gap:6px;}
-  .dot{width:5px;height:5px;border-radius:50%;background:var(--line);}
+  .dot-row{display:flex;gap:8px;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;}
   .dot.active{background:var(--ink);}
 
   /* about */
@@ -126,7 +123,7 @@
   .kcomp li{display:flex;gap:14px;font-size:14.5px;color:var(--ink-soft);padding:16px 0;border-bottom:1px solid var(--line);}
   .kcomp li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:7px;flex:none;}
   .edu{margin-top:30px;font-size:14px;color:var(--ink-soft);}
-  .edu b{color:var(--ink);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin:24px 0 12px;font-weight:600;}
+  .edu b{color:var(--ink);display:block;font-size:15px;margin:24px 0 12px;font-weight:600;}
   .edu b:first-child{margin-top:0;}
   .edu ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:9px;}
   .edu ol li{padding-left:2px;}
@@ -142,14 +139,17 @@
   .proj-body{padding:20px 24px;}
   .proj-card h4{font-family:"PT Serif",serif;font-size:18px;font-weight:700;margin:0;}
   .proj-card p{font-size:13.5px;color:var(--ink-soft);margin:0;max-width:42ch;}
-
   /* stats */
   .stats{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:52px 0;}
-  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;text-align:left;}
-  @media (max-width:1040px){.stats-grid{grid-template-columns:repeat(3,1fr);}}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 0;text-align:left;}
   @media (max-width:820px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
   .stat{padding:0 26px;border-left:1px solid var(--line);}
-  .stat:first-child{border-left:none;padding-left:0;}
+  /* first tile of each row: no divider */
+  .stat:nth-child(4n+1){border-left:none;padding-left:0;}
+  @media (max-width:820px){
+    .stat:nth-child(4n+1){border-left:1px solid var(--line);padding-left:26px;}
+    .stat:nth-child(odd){border-left:none;padding-left:0;}
+  }
   .stat b{display:block;font-family:"PT Serif",serif;font-size:clamp(24px,2.6vw,34px);font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;}
   .stat span{font-size:12.5px;color:var(--ink-soft);display:block;margin-top:8px;max-width:24ch;}
 
@@ -167,7 +167,7 @@
   .doc-card:hover{opacity:.82;}
   .doc-thumb{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--surface-2);}
   .doc-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;user-select:none;-webkit-user-drag:none;pointer-events:none;filter:grayscale(.15);}
-  .doc-lock{position:absolute;top:10px;right:10px;background:var(--gold);color:#fff;border-radius:0;padding:5px 9px;font-size:10.5px;display:flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.05em;}
+  .doc-lock{position:absolute;top:10px;right:10px;background:var(--gold);color:#fff;border-radius:0;padding:5px 9px;font-size:12px;display:flex;align-items:center;gap:5px;}
   .doc-body{padding:18px 20px 22px;}
   .doc-body h4{font-size:14.5px;margin:0 0 6px;font-family:"Inter";font-weight:600;}
   .doc-body p{font-size:12.5px;color:var(--ink-soft);margin:0;}
@@ -184,9 +184,9 @@
   .court-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:32px;}
   @media (max-width:760px){.court-grid{grid-template-columns:1fr;}}
   .court-card{padding:30px;color:var(--ink-soft);background:var(--surface);}
-  .court-card .tag{display:inline-block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);border:1px solid var(--gold);border-radius:0;padding:4px 9px;margin-bottom:16px;}
+  .court-card .tag{display:inline-block;font-size:12.5px;font-weight:500;color:var(--gold);border:1px solid var(--gold);border-radius:0;padding:4px 9px;margin-bottom:16px;}
   .court-card dl{margin:0 0 18px;font-size:13.5px;}
-  .court-card dt{color:var(--ink);font-weight:600;margin-top:14px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;}
+  .court-card dt{color:var(--ink);font-weight:600;margin-top:14px;font-size:13px;}
   .court-card dt:first-child{margin-top:0;}
   .court-card dd{margin:4px 0 0;}
   .court-card .btn{padding:10px 18px;font-size:11.5px;}
@@ -198,7 +198,7 @@
   .contact-box .lede{color:#c9c9c6;}
   .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
   .contact-list a{text-decoration:none;font-size:16px;font-weight:600;color:var(--gold-soft);}
-  .contact-list span{display:block;font-size:11px;color:#9a9a97;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+  .contact-list span{display:block;font-size:13px;color:#9a9a97;margin-bottom:4px;}
 
   footer{padding-block:36px;text-align:center;font-size:12px;color:var(--ink-soft);border-top:1px solid var(--line);}
   footer a{color:var(--ink-soft);text-decoration:underline;}
@@ -209,7 +209,7 @@
   .lightbox img{max-width:min(560px,90vw);max-height:70vh;object-fit:contain;border-radius:0;user-select:none;-webkit-user-drag:none;pointer-events:none;}
   .lb-cap{color:#eee;font-size:13px;text-align:center;max-width:60ch;}
   .lb-close{position:absolute;top:22px;right:26px;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:0;padding:8px 14px;font-size:13px;cursor:pointer;}
-  .lb-watermark{position:absolute;top:22px;left:26px;color:#eee;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:0;}
+  .lb-watermark{position:absolute;top:22px;left:26px;color:#eee;font-size:12.5px;border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:0;}
   .lb-nav{display:flex;gap:10px;}
   .lb-nav button{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:0;padding:8px 14px;font-size:13px;cursor:pointer;}
 </style>
@@ -243,7 +243,7 @@
         </div>
       </div>
       <div class="photo-card" id="photoCard" title="Нажмите, чтобы посмотреть следующее фото">
-        <img id="heroPhoto" src="photos/photo-1.jpg" alt="Кирилл Андреев, юрист">
+        <img id="heroPhoto" src="photos/photo-2.jpg" alt="Кирилл Андреев, юрист">
         <div class="photo-hint">
           <span class="dot-row"><span class="dot active" data-i="0"></span><span class="dot" data-i="1"></span></span>
           нажмите на фото
@@ -261,7 +261,7 @@
           Юрист с опытом комплексного сопровождения инвестиционно-строительных проектов на всех этапах — от приобретения земельного актива и структурирования сделки до ввода объекта в эксплуатацию. Специализируюсь на строительных и инфраструктурных контрактах, сделках с недвижимостью и правовом сопровождении девелоперских проектов.
         </p>
         <p class="lede" style="margin-bottom:18px;">
-          В рамках профессиональной деятельности руководил командой юристов, обеспечивая правовую поддержку проектов крупных девелоперов и строительных компаний, включая ЖК «Headliner», ЖК «Paveletskaya City», МФК «PRIORITY Басманный». Участвовал в запуске EPC-контракта со стороны генерального подрядчика по проекту переработки и производства сжиженного природного газа в районе посёлка Усть-Луга Ленинградской области.
+          В рамках профессиональной деятельности обеспечил правовую поддержку проектов крупных девелоперов и строительных компаний, включая ЖК «Headliner», ЖК «Paveletskaya City», МФК «MY PRIORITY Басманный». Обеспечивал заключение сделок с земельными участками, включая их приобретение, а также договоров на строительство инфраструктуры в особой экономической зоне «Максимиха» (проект ВТБ). Участвовал в запуске EPC-контракта со стороны генерального подрядчика по проекту переработки и производства сжиженного природного газа в районе посёлка Усть-Луга Ленинградской области.
         </p>
         <p class="lede">
           Имею опыт работы как со стороны генерального подрядчика, так и со стороны технического заказчика и застройщика, что позволяет хорошо понимать интересы и задачи всех участников строительного процесса.
@@ -287,13 +287,13 @@
         <ul class="kcomp">
           <li>Сопровождение всего договорного цикла от изысканий и проектирования до генерального подряда и комплексных поставок (договоры на проектирование, строительство и реконструкцию, управление проектом, осуществление функций технического заказчика, EPC-контракты и др.)</li>
           <li>Сопровождение КРТ и инфраструктурных договоров, в том числе по законодательству города Москвы.</li>
-          <li>Анализ закупочной документации и споры в рамках 223-ФЗ и 44-ФЗ.</li>
           <li>Сопровождение сделок с недвижимостью, включая куплю-продажу, аренду, установление сервитутов и иные сделки с недвижимым имуществом.</li>
           <li>Юридическое консультирование по вопросам привлечения проектного финансирования, включая анализ правовых аспектов структурирования и реализации финансирования девелоперских проектов, а также анализ кредитной и обеспечительной документации (залоги, поручительства, банковские гарантии).</li>
           <li>Помощь и поддержка в вопросах строительства, эксплуатации инженерных сетей, подключения капитальных сооружений к инженерной инфраструктуре, а также в вопросах ресурсоснабжения.</li>
           <li>Арбитраж по строительным контрактам, включая досудебную стадию: представительство в арбитражных судах, третейских судах, МКАС при Торгово-промышленной палате РФ.</li>
           <li>Работа с дебиторской задолженностью, включая претензионную работу, сопровождение взыскания задолженности, взаимодействие с банками и сопровождение процедур предъявления банковских гарантий к исполнению.</li>
           <li>Сопровождение регуляторных и комплаенс-проверок, взаимодействия с надзорными и правоохранительными органами.</li>
+          <li>Анализ закупочной документации и споры в рамках 223-ФЗ и 44-ФЗ.</li>
           <li>Трудовое право и комплаенс, включая разработку внутренних регламентов и локальных нормативных актов, а также сопровождение трудовых споров.</li>
           <li>Автоматизация бизнес-процессов и юридической функции (Legal Operations), участие во внедрении и совершенствовании систем электронного документооборота, оптимизация договорной и правовой работы.</li>
         </ul>
@@ -307,6 +307,12 @@
       <h2 style="font-size:28px;margin:0 0 10px;font-weight:400;">Объекты, в правовом сопровождении которых участвовал</h2>
       <div class="proj-grid">
         <div class="proj-card">
+          <div class="proj-art"><img src="projects/maksimikha.webp" alt="Логистический комплекс РВБ в ОЭЗ «Максимиха»"></div>
+          <div class="proj-body">
+            <h4>Логистический комплекс РВБ в ОЭЗ «Максимиха»</h4>
+          </div>
+        </div>
+        <div class="proj-card">
           <div class="proj-art"><img src="projects/headliner.jpg" alt="ЖК «Headliner»"></div>
           <div class="proj-body">
             <h4>ЖК «Headliner»</h4>
@@ -319,15 +325,21 @@
           </div>
         </div>
         <div class="proj-card">
-          <div class="proj-art"><img src="projects/priority-basmanny.jpg" alt="МФК «PRIORITY Басманный»"></div>
+          <div class="proj-art"><img src="projects/priority-basmanny.jpg" alt="МФК «MY PRIORITY Басманный»"></div>
           <div class="proj-body">
-            <h4>МФК «PRIORITY Басманный»</h4>
+            <h4>МФК «MY PRIORITY Басманный»</h4>
           </div>
         </div>
         <div class="proj-card">
           <div class="proj-art"><img src="projects/ustluga.jpg" alt="«Объекты непроизводственного назначения» на КПЭГ"></div>
           <div class="proj-body">
             <h4>«Объекты непроизводственного назначения» на КПЭГ</h4>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-art"><img src="projects/dubrovskaya.jpg" alt="Жилой дом по программе реновации, 2-я Дубровская ул."></div>
+          <div class="proj-body">
+            <h4>Жилой дом по программе реновации, 2-я Дубровская ул.</h4>
           </div>
         </div>
         <div class="proj-card">
@@ -353,22 +365,29 @@
       <div class="stats">
         <div class="stats-grid">
           <div class="stat"><b>90%</b><span>выигранных дел из 50+ споров за 2021–2026</span></div>
-          <div class="stat"><b>~15 млрд ₽</b><span>макроэкономический эффект спора в МКАС по EPC-контракту</span></div>
-          <div class="stat"><b>25+</b><span>тендеров застройщиков по строительству коммерческих объектов и жилой недвижимости, средняя сумма контракта — 20 млрд ₽</span></div>
-          <div class="stat"><b>4</b><span>кадровые процедуры: 2 сокращения и 2 аттестации персонала по ТК РФ</span></div>
-          <div class="stat"><b>15–30%</b><span>сокращение времени на согласовательные процедуры за счёт автоматизации делопроизводства и юридической функции</span></div>
+          <div class="stat"><b>~15 млрд ₽</b><span>экономический эффект спора в МКАС по EPC-контракту</span></div>
+          <div class="stat"><b>5–15 млрд ₽</b><span>сделки с резидентами ОЭЗ «Максимиха»</span></div>
+          <div class="stat"><b>10+ млрд ₽</b><span>договор поставки электрического подвижного состава</span></div>
+          <div class="stat"><b>~300 млн ₽</b><span>экономия по спору с концедентом</span></div>
+          <div class="stat"><b>20+</b><span>тендеров застройщиков по строительству коммерческих объектов и жилой недвижимости, средняя сумма контракта — 20 млрд ₽</span></div>
+          <div class="stat"><b>70+</b><span>коммерческих арбитражных споров</span></div>
+          <div class="stat"><b>20–40%</b><span>сокращение времени на разработку документов за счёт автоматизации и ИИ-приложений</span></div>
         </div>
       </div>
       <ul class="kcomp" style="margin-top:40px;">
-        <li>Оказал юридическую консультационную поддержку партнёрам по КРТ и масштабному инвестиционному проекту на территории Некрасовки.</li>
-        <li>Сопровождал сделки по проектному финансированию, раскрытию опционов и договоров купли-продажи долей в проекте «Румянцево Град».</li>
-        <li>Обеспечил юридическое сопровождение оператора особой экономической зоны «Максимиха» при заключении сделок с резидентами, включая договоры управления и эксплуатации (распределительные пункты, сети, автомобильные дороги), сделки по межеванию и отчуждению земельных участков. Средняя сумма сделок — 5 млрд рублей.</li>
+        <li>Сопровождал Family Office при получении проектного финансирования в ДОМ.РФ, разработал договоры купли-продажи и опционные соглашения по проекту «Румянцево Град».</li>
+        <li>Подготовил комплект документов для заключения инфраструктурного договора в соответствии с законодательством города Москвы в целях получения льгот по арендной плате за земельный участок. Работа выполнена в рамках сопровождения масштабного инвестиционного проекта на территории Некрасовки (г. Москва).</li>
+        <li>Провёл анализ документации по планировке территории, договора о комплексном развитии территории (КРТ) и иной градостроительной документации в рамках реализации КРТ в Некрасовке, сопровождал заключение договора технического заказчика и договоров аренды земельных участков, находящихся в публичной собственности.</li>
+        <li>Создал для собственников бизнеса ИИ-приложения (вайб-кодинг), которые решают типовые юридические задачи без штатного юриста: анонимизация документов, вёрстка и автозаполнение договоров по заданным параметрам и типовым конструкциям, подготовка протоколов разногласий, в том числе в интерактивном формате, дашборды по договорным рискам и другие инструменты. Это позволило сократить время на разработку документов на 20–40%.</li>
+        <li>Разработал стратегию защиты и контрактную стратегию в интересах генерального подрядчика по внесению изменений в договор развития территории, заключённый с Московским фондом реновации: изменены порядок и этапность оплаты работ на условиях, комфортных для генподрядчика, исключены конфликтные ситуации и риск применения штрафных санкций. Подготовил комплект документов, связанных с неисполнением Фондом реновации встречных обязательств по договору. Работа выполнена по проектам реновации в районе Капотня (ЮВАО) и на 2-й Дубровской улице (Таганский район, ЦАО) г. Москвы.</li>
+        <li>Для оператора особой экономической зоны «Максимиха» (проект ВТБ) обеспечил заключение договоров купли-продажи земельных участков, договора управления и договора купли-продажи будущей вещи, предметом которого являются распределительные пункты, сети, автомобильные дороги и иная инфраструктура, с резидентами ОЭЗ — РВБ (Wildberries &amp; Russ) и «Капорус». Сумма сделок — от 5 до 15 млрд рублей.</li>
         <li>Разработал финансово-правовую схему передачи в аренду ПАО «Россети» электросетевого хозяйства на срок 49 лет, а также дробления мощности в рамках технологического присоединения для оператора особой экономической зоны. Разработанная схема позволила оператору ОЭЗ продолжить строительство инфраструктуры, не дожидаясь окончания инвестиционной фазы электросетевой генерирующей компании.</li>
-        <li>Участвовал в более чем 25 тендерах застройщиков по строительству жилья и промышленных объектов, включая ЖК «Мангазея на Тульской», «OPUS», «PRIDE», «ONEST», «Luzhniki Collection», «HIGH LIFE», «Тушино-2018», спортивный комплекс им. Э. А. Стрельцова, объекты непроизводственного значения КПЭГ в Усть-Луге, мостовой переход через р. Лену в районе г. Якутска — сопровождение под ключ. Средняя цена контракта — 20 млрд рублей.</li>
-        <li>Разработал стратегию защиты и представлял интересы в суде МКАС по EPC-контракту, спор по которому был связан с изменением объёмов работ и поставок оборудования; экономический эффект — около 15 млрд рублей.</li>
+        <li>Для специальной проектной компании, реализующей концессионные проекты в четырёх субъектах Российской Федерации в сфере электрического подвижного состава и дорожной инфраструктуры, обеспечил разработку всей линейки договоров, в том числе договора с заказчиком, договора генерального подряда, договора оказания услуг технического заказчика и договора генерального проектирования, а также сопровождал заключение договора поставки электрического подвижного состава на сумму свыше 10 млрд рублей.</li>
+        <li>Для специальной проектной компании подготовил стратегию защиты и процессуальные документы по спору с концедентом (публичной стороной) о расторжении концессионного соглашения и взыскании убытков в связи с нереализацией проекта. Требования концедента о взыскании убытков отклонены, что позволило сэкономить около 300 млн рублей.</li>
+        <li>Участвовал в более чем 20 тендерах застройщиков по строительству жилья и промышленных объектов, включая ЖК «Мангазея на Тульской», «OPUS», «PRIDE», «ONEST», «Luzhniki Collection», «HIGH LIFE», «Тушино-2018», спортивный комплекс им. Э. А. Стрельцова: анализ закупочной документации, переговоры, подготовка протоколов разногласий — сопровождение под ключ. Средняя цена контракта — 20 млрд рублей.</li>
+        <li>В составе команды разработал стратегию защиты и представлял интересы в МКАС при ТПП РФ по спору из EPC-контракта, связанному с изменением объёмов работ и поставок оборудования; экономический эффект — около 15 млрд рублей.</li>
         <li>Участвовал в более чем 70 коммерческих арбитражных спорах по различным направлениям (взыскание аванса, изменение стоимости и объёмов работ, раскрытие банковских гарантий, оспаривание решений контрольно-надзорных органов); экономический эффект по спорам в различных компаниях составлял от 50 до 300 млн рублей и выше.</li>
-        <li>Обеспечил для крупного генерального подрядчика автоматизацию делопроизводства, внедрение линейки локальных нормативных актов и стандартизацию документов по договорной и судебно-претензионной работе, что позволило сократить затраты рабочего времени сотрудников на согласовательные процедуры на 15–30%.</li>
-        <li>Провёл сокращение персонала и аттестацию сотрудников в рамках трудового законодательства для одного из подрядчиков, успешно представлял интересы работодателя в трудовых спорах.</li>
+        <li>Для одного из подрядчиков провёл аттестацию персонала и успешно представлял интересы работодателя в трудовых спорах.</li>
       </ul>
     </div>
   </section>
@@ -473,15 +492,26 @@
 <script>
 (function(){
   // photo cycling
-  var photos=["photos/photo-1.jpg","photos/photo-2.jpg"];
-  var idx=0;
+  var photos=["photos/photo-2.jpg","photos/photo-1.jpg"];
+  var idx=0, busy=false;
   var img=document.getElementById("heroPhoto");
   var dots=document.querySelectorAll(".dot");
-  document.getElementById("photoCard").addEventListener("click",function(){
-    idx=(idx+1)%photos.length;
-    img.style.opacity=0;
-    setTimeout(function(){ img.src=photos[idx]; img.style.opacity=1; },120);
+  // preload, so the second photo shows at once instead of the old one lingering while it downloads
+  photos.forEach(function(p){ var im=new Image(); im.src=p; });
+  function showPhoto(n){
+    if(busy || n===idx) return;
+    busy=true; idx=n;
     dots.forEach(function(d,i){ d.classList.toggle("active", i===idx); });
+    img.style.opacity=0;
+    setTimeout(function(){
+      img.onload=function(){ img.style.opacity=1; setTimeout(function(){ busy=false; },250); };
+      img.src=photos[idx];
+      if(img.complete){ img.onload(); }
+    },200);
+  }
+  document.getElementById("photoCard").addEventListener("click",function(e){
+    var dot=e.target.closest(".dot");
+    showPhoto(dot ? +dot.dataset.i : (idx+1)%photos.length);
   });
 
   // nav toggle
@@ -492,6 +522,8 @@
   // documents data
   function pp(slug,n){ var a=[]; for(var i=1;i<=n;i++) a.push("docs/"+slug+"-"+i+".jpg"); return a; }
   var docs=[
+    {title:"Договор купли-продажи земельного участка", desc:"Договор купли-продажи земельного участка под складской комплекс с оплатой покупной цены частями, обеспеченной независимыми гарантиями. Полный текст с приложениями — 283 листа, открыты титульный лист, раздел 2 «Предмет Договора» и раздел 3 «Покупная цена участка и порядок оплаты».", pages:pp("contract-kp",6)},
+    {title:"Договор купли-продажи будущей вещи", desc:"Договор купли-продажи будущей вещи (п. 2 ст. 455 ГК РФ) — объекта электросетевого хозяйства, который продавец создаёт силами подрядчика и передаёт покупателю в смонтированном виде. Оплата шестью частями, часть платежей обусловлена передачей объекта, исполнение обеспечено независимыми гарантиями. Полный текст с приложениями — 52 листа, открыты титульный лист и страницы 8–14: предмет договора, покупная цена и порядок оплаты, доставка, приёмка и передача объекта.", pages:pp("contract-dkbv",8)},
     {title:"Договор на разработку мастерплана (стадия предпроект)", desc:"Договор на разработку концепции мастерплана застройки территории и подготовку материалов для рассмотрения в Департаменте градостроительной политики города Москвы. Полный текст — 24 листа, показаны первые 10.", pages:pp("contract-masterplan",10)},
     {title:"Договор на выполнение проектных работ (ПИР)", desc:"Стадия «Проект» — договор на разработку проектной документации. Полный текст — 30 листов, показаны первые 10.", pages:pp("contract-pir",10)},
     {title:"Договор на выполнение СМР", desc:"Договор строительного подряда на выполнение строительно-монтажных работ. Полный текст — 44 листа, показаны первые 10.", pages:pp("contract-smr",10)},
