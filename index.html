@@ -153,6 +153,20 @@
   .stat b{display:block;font-family:"PT Serif",serif;font-size:clamp(24px,2.6vw,34px);font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;}
   .stat span{font-size:12.5px;color:var(--ink-soft);display:block;margin-top:8px;max-width:24ch;}
 
+  /* ai tools: demo videos */
+  .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:860px){.tool-grid{grid-template-columns:1fr;}}
+  .tool-card{background:var(--surface);}
+  .tool-video{position:relative;aspect-ratio:16/10;background:var(--surface-2);cursor:pointer;}
+  .tool-video video{width:100%;height:100%;display:block;object-fit:contain;background:#f7f7f5;}
+  .tool-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(22,22,22,.18);transition:background .15s;}
+  .tool-play span{background:var(--accent);color:var(--on-accent);font-size:14px;font-weight:600;padding:12px 22px;}
+  .tool-video:hover .tool-play{background:rgba(22,22,22,.28);}
+  .tool-video.playing .tool-play{display:none;}
+  .tool-body{padding:22px 26px 26px;}
+  .tool-body h4{font-family:"PT Serif",serif;font-size:19px;font-weight:700;margin:0 0 8px;}
+  .tool-body p{font-size:14px;color:var(--ink-soft);margin:0;}
+
   /* documents */
   .doc-block{margin-bottom:64px;}
   .doc-block h3{font-size:21px;margin-bottom:8px;font-weight:700;}
@@ -222,6 +236,7 @@
       <a href="#projects">Проекты</a>
       <a href="#achievements">Достижения</a>
       <a href="#documents">Документы</a>
+      <a href="#ai-tools">ИИ-инструменты</a>
       <a href="#court">Судебная практика</a>
       <a href="#education">Образование</a>
       <a href="#contact">Контакты</a>
@@ -422,6 +437,33 @@
         </div>
       </div>
 
+      <div class="doc-block" id="ai-tools">
+        <h3>ИИ-инструменты для юридической работы</h3>
+        <p class="lede">Приложения, созданные методом вайб-кодинга для типовых юридических задач. Демонстрация снята на вымышленном договоре и показана в ускоренном режиме.</p>
+      <div class="tool-grid">
+        <div class="tool-card">
+          <div class="tool-video">
+            <video src="demo/demo-anon.webm" poster="demo/demo-anon-poster.jpg" preload="none" muted playsinline controls></video>
+            <div class="tool-play"><span>▶ Смотреть демонстрацию</span></div>
+          </div>
+          <div class="tool-body">
+            <h4>Анонимизатор документов</h4>
+            <p>Обезличивает договоры, письма, таблицы и сканы: ФИО, компании, суммы, даты, адреса и реквизиты заменяются метками или закрашиваются. Отчёт о скрытых данных остаётся у юриста и не уходит вместе с документом.</p>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-video">
+            <video src="demo/demo-prot.webm" poster="demo/demo-prot-poster.jpg" preload="none" muted playsinline controls></video>
+            <div class="tool-play"><span>▶ Смотреть демонстрацию</span></div>
+          </div>
+          <div class="tool-body">
+            <h4>Протокол разногласий из правок Word</h4>
+            <p>Собирает протокол разногласий из договора с правками контрагента в режиме рецензирования: находит изменённые пункты, показывает «было / стало», подставляет стороны и подписантов из преамбулы и формирует готовый документ Word.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
       <div class="doc-block" style="margin-bottom:0;">
         <h3>Образцы процессуальных документов</h3>
         <p class="lede">Процессуальные документы, подготовленные для сопровождения споров.</p>
@@ -513,6 +555,14 @@
   document.getElementById("photoCard").addEventListener("click",function(e){
     var dot=e.target.closest(".dot");
     showPhoto(dot ? +dot.dataset.i : (idx+1)%photos.length);
+  });
+
+  // demo videos: play on click of the overlay, hide it while playing
+  document.querySelectorAll(".tool-video").forEach(function(box){
+    var v=box.querySelector("video");
+    box.querySelector(".tool-play").addEventListener("click",function(){ v.play(); });
+    v.addEventListener("play",function(){ box.classList.add("playing"); });
+    v.addEventListener("ended",function(){ box.classList.remove("playing"); });
   });
 
   // nav toggle
