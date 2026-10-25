@@ -1,16 +1,18 @@
 <title>Кирилл Андреев</title>
-<!-- Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter (загружается только после согласия посетителя) -->
 <script type="text/javascript">
-(function(m,e,t,r,i,k,a){
-m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113788085', 'ym');
-
-ym(113788085, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+window.loadYandexMetrika=function(){
+  if(window.__ymLoaded)return; window.__ymLoaded=true;
+  (function(m,e,t,r,i,k,a){
+  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+  })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113788085', 'ym');
+  ym(113788085, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+};
+(function(){var v=null;try{v=localStorage.getItem("cookie-consent");}catch(e){} if(v==="accepted")window.loadYandexMetrika();})();
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/113788085" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic">
@@ -239,6 +241,17 @@ ym(113788085, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
   .lb-watermark{position:absolute;top:22px;left:26px;color:#eee;font-size:12.5px;border:1px solid rgba(255,255,255,.3);padding:6px 10px;border-radius:0;}
   .lb-nav{display:flex;gap:10px;}
   .lb-nav button{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:0;padding:8px 14px;font-size:13px;cursor:pointer;}
+  /* cookie consent */
+  .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:200;max-width:720px;margin:0 auto;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.12);padding:18px 20px;display:none;gap:14px;align-items:center;flex-wrap:wrap;font-size:13.5px;line-height:1.5;}
+  .cookie-banner.show{display:flex;}
+  .cookie-banner p{margin:0;flex:1 1 320px;}
+  .cookie-banner a{color:var(--gold);}
+  .cookie-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .cookie-actions button{font:inherit;font-weight:600;padding:9px 16px;cursor:pointer;border:1px solid var(--accent);border-radius:0;}
+  .cookie-accept{background:var(--accent);color:var(--on-accent);}
+  .cookie-decline{background:transparent;color:var(--ink);}
+  footer .legal-links{margin-top:10px;}
+  footer .legal-links button{background:none;border:none;padding:0;font:inherit;color:var(--ink-soft);text-decoration:underline;cursor:pointer;}
 </style>
 
 <header class="site">
@@ -531,8 +544,42 @@ ym(113788085, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLa
 
 <footer>
   <div class="wrap">© Кирилл Андреев. Материалы портфолио носят демонстрационный характер, все данные в образцах документов обезличены.</div>
+<div class="wrap legal-links"><a href="privacy.html">Политика обработки персональных данных</a> · <a href="consent.html">Согласие на обработку данных</a> · <button type="button" id="cookieSettings">Настройки cookie</button></div>
 <div class="wrap" style="margin-top:14px;"><img src="https://hits.sh/kirill-lawyer.github.io/portfolio-kirill_lawyer.svg?label=%D0%9F%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D1%8B&color=93712e&labelColor=161616" alt="Счётчик просмотров" style="height:20px;vertical-align:middle;" loading="lazy"></div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Уведомление о cookie">
+  <p>Сайт использует файлы cookie и сервис «Яндекс Метрика» для сбора статистики посещений. Нажимая «Принять», вы даёте <a href="consent.html">согласие на обработку персональных данных</a> на условиях <a href="privacy.html">Политики</a>. При отказе статистика не собирается.</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-accept" id="cookieAccept">Принять</button>
+    <button type="button" class="cookie-decline" id="cookieDecline">Отказаться</button>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY="cookie-consent", banner=document.getElementById("cookieBanner");
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function clearYm(){
+    document.cookie.split(";").forEach(function(c){
+      var n=c.split("=")[0].trim();
+      if(/^_ym|^yandexuid|^yabs-|^i$/.test(n)){
+        document.cookie=n+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+        document.cookie=n+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain="+location.hostname;
+      }
+    });
+    try{Object.keys(localStorage).forEach(function(k){if(/^_ym/.test(k))localStorage.removeItem(k);});}catch(e){}
+  }
+  if(!get())banner.classList.add("show");
+  document.getElementById("cookieAccept").addEventListener("click",function(){set("accepted");banner.classList.remove("show");window.loadYandexMetrika();});
+  document.getElementById("cookieDecline").addEventListener("click",function(){
+    var was=get()==="accepted"; set("declined"); banner.classList.remove("show"); clearYm();
+    if(was||window.__ymLoaded)location.reload();
+  });
+  document.getElementById("cookieSettings").addEventListener("click",function(){banner.classList.add("show");});
+})();
+</script>
+
 
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">Закрыть ✕</button>
