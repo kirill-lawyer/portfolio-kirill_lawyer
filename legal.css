@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap&subset=cyrillic");
+@import url("fonts/fonts.css");
 :root{--bg:#fff;--ink:#161616;--ink-soft:#68696c;--line:#e3e2df;--surface-2:#f7f7f5;--gold:#93712e;}
 @media (prefers-color-scheme: dark){:root{--bg:#111;--ink:#f2f2f0;--ink-soft:#a6a6a3;--line:#2c2c2a;--surface-2:#1c1c1c;--gold:#cdae6c;}}
 *{box-sizing:border-box;}
